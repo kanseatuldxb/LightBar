@@ -1,0 +1,22 @@
+{
+    "Age": 26,
+    "AgeGroup": "prime",
+    "Base64Face": null,
+    "Created": "2023-04-29T12:22:03.282005Z",
+    "DeviceName": "ZONE 2 CAMERA",
+    "EventTime": "2023-04-29T16:21:20+04:00",
+    "Face": "/media/person/photo/Face_UbpO0SY.jpg",
+    "FaceExpression": "poker-faced",
+    "Gender": "Unknown",
+    "Glass": "no",
+    "Hat": "no",
+    "Image": "/media/person/fullphoto/Image_GsonDFD.jpg",
+    "Library": "Unknown",
+    "Mask": "no",
+    "Modified": "2023-04-29T12:22:03.282005Z",
+    "Name": "Unknown",
+    "Similarity": 0.0,
+    "SyncStatus": false,
+    "base64Image": null,
+    "id": 1558
+}
