@@ -6,35 +6,48 @@ import base64
 import os
 def on_message(ws, message):
     data = json.loads(message)
+    print(data["DeviceName"] , data["DeviceName"] !=  'ZONE 2 CAMERA' )
+    if data["DeviceName"] !=  'ZONE 2 CAMERA':
+        return
     print(f"Received: {data}")
     if data["Library"] == "Unknown":
-        os.system("i2cset -y 1 0x10 0x02 0x00")
+        os.system("i2cset -y 1 0x10 0x01 0x00")
         os.system("i2cset -y 1 0x10 0x03 0x00")
         os.system("i2cset -y 1 0x10 0x04 0x00")
-        os.system("i2cset -y 1 0x10 0x01 0xFF")
+        #os.system("i2cset -y 1 0x10 0x02 0xFF")
+        #time.sleep(1)
+        #os.system("i2cset -y 1 0x10 0x02 0x00")
+        #time.sleep(1)
+        #os.system("i2cset -y 1 0x10 0x02 0xFF")
+        #time.sleep(1)
+        #os.system("i2cset -y 1 0x10 0x02 0x00")
+        #time.sleep(1)
+        os.system("i2cset -y 1 0x10 0x02 0xFF")
         os.system("aplay unknown.wav")
-        os.system("i2cset -y 1 0x10 0x01 0x00")
+        os.system("i2cset -y 1 0x10 0x02 0x00")
     elif data["Library"] == "VVIP":
         os.system("i2cset -y 1 0x10 0x01 0x00")
         os.system("i2cset -y 1 0x10 0x03 0x00")
         os.system("i2cset -y 1 0x10 0x04 0x00")
-        os.system("i2cset -y 1 0x10 0x02 0xFF")
+        os.system("i2cset -y 1 0x10 0x03 0xFF")
         os.system("aplay vvip.wav")
-        os.system("i2cset -y 1 0x10 0x02 0x00")
+        #cmd = "espeak -s120+f4 'welcome to premises " + data["Name"] +"   '"
+        #os.system(cmd)
+        os.system("i2cset -y 1 0x10 0x03 0x00")
     elif data["Library"] == "BlackList":
-        os.system("i2cset -y 1 0x10 0x02 0x00")
+        os.system("i2cset -y 1 0x10 0x03 0x00")
         os.system("i2cset -y 1 0x10 0x01 0x00")
         os.system("i2cset -y 1 0x10 0x04 0x00")
-        os.system("i2cset -y 1 0x10 0x03 0xFF")
+        os.system("i2cset -y 1 0x10 0x02 0xFF")
         os.system("aplay blacklist.wav")
-        os.system("i2cset -y 1 0x10 0x03 0x00")
+        os.system("i2cset -y 1 0x10 0x02 0x00")
     elif data["Library"] == "WhiteList":
         os.system("i2cset -y 1 0x10 0x02 0x00")
         os.system("i2cset -y 1 0x10 0x03 0x00")
         os.system("i2cset -y 1 0x10 0x01 0x00")
-        os.system("i2cset -y 1 0x10 0x04 0xFF")
+        os.system("i2cset -y 1 0x10 0x01 0xFF")
         os.system("aplay verified.wav")
-        os.system("i2cset -y 1 0x10 0x04 0x00")
+        os.system("i2cset -y 1 0x10 0x01 0x00")
     else:
         os.system("i2cset -y 1 0x10 0x02 0x00")
         os.system("i2cset -y 1 0x10 0x03 0x00")
